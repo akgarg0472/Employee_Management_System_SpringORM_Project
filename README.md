@@ -8,4 +8,5 @@ We can add record of a new employee, update record of existing employee, fetch r
   -Spring ORM  
   -Hibernate ORM framework  
   -MySQL Database  
+  -IntelliJ Idea Ultimate 2020.3  
 
