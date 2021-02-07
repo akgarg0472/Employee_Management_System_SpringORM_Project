@@ -7,7 +7,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
 
 public class Main {
 
@@ -19,12 +18,9 @@ public class Main {
         // 5-> update record
         // 6-> exit program
 
-        java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-
         Scanner scanner = new Scanner(System.in);
         ApplicationContext context = new ClassPathXmlApplicationContext("ProjectConfig.xml");
         EmployeeDAOManager dao = context.getBean("employeeDAOManager", EmployeeDAOManager.class);
-
         int choice;
         boolean isExit = false;
 

@@ -25,10 +25,6 @@ public class EmployeeDAOManager {
         return addEmployee(new Employee(employeeId, employeeName, employeeBranch, employeeProject));
     }
 
-    public Employee getEmployee(Employee employee) {
-        return null;
-    }
-
     public Employee getEmployee(int employeeId) {
         Employee employee = this.hibernateTemplate.get(Employee.class, employeeId);
         if (employee == null) {
@@ -59,9 +55,9 @@ public class EmployeeDAOManager {
     }
 
     @Transactional
-    public String deleteEmployee(int employeeId) {
+    public String deleteEmployee(Employee employee) {
         try {
-            Employee employee = this.hibernateTemplate.get(Employee.class, employeeId);
+            int employeeId = employee.getEmployeeId();
             if (employee == null) {
                 return "No employee found with id=" + employeeId;
             }
@@ -72,5 +68,11 @@ public class EmployeeDAOManager {
             e.printStackTrace();
         }
         return "Employee deletion failed";
+    }
+
+    @Transactional
+    public String deleteEmployee(int employeeId) {
+        Employee employee = this.hibernateTemplate.get(Employee.class, employeeId);
+        return this.deleteEmployee(employee);
     }
 }
